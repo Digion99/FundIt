@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Project Details</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #333;
+    color: #fff;
+    z-index: 1;
+  }
+  
+  .card {
+    display: inline-block;
+    width: 18rem;
+    margin-right: 20px;
+    border: 1px solid black;
+    padding: 20px;
+    background-color: #fff;
+    z-index: 0;
+  }
+  </style>
+  
+  
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">FundIt</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="post-project.html">Post Project</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="project-details.html">Fund Project</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="card" height=100 style="width: 18rem;">
+    
+      <div class="card-body">
+        <h5 class="card-title" id="projectTitle"></h5>
+        <p class="card-text" id="projectDescription"></p>
+        <p class="card-text"><strong>Platform: </strong><span id="projectSkills"></span></p>
+        <p class="card-text"><strong>Minimum Investment: </strong><span id="projectBudget"></span>eth</p>
+        <img src="" class="img-fluid mb-3" alt="" id="projectImage">
+        <button type="button" class="btn btn-primary" id="mailBtn">Mail</button>
+        <a href="invest.html" class="btn btn-primary">invest</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const projectDetails = JSON.parse(localStorage.getItem('projectDetails'));
+
+    document.querySelector('#projectTitle').textContent = projectDetails.title;
+    document.querySelector('#projectDescription').textContent = projectDetails.description;
+    document.querySelector('#projectSkills').textContent = projectDetails.skills;
+    document.querySelector('#projectBudget').textContent = projectDetails.budget;
+    document.querySelector('#projectImage').setAttribute('src', projectDetails.image);
+
+    const mailBtn = document.querySelector('#mailBtn');
+    mailBtn.addEventListener('click', () => {
+      const mailTo = 'mailto:hello@gmail.com ?subject=' + projectDetails.title + '&body=' + projectDetails.description;
+      window.location.href = mailTo;
+    });
+  </script>
+  
+  
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">FundIt</h5>
+      <p class="card-text">Great Website</p>
+      <p class="card-text"><strong>Platform: </strong>app</p>
+      <p class="card-text"><strong>Minimum Investment: 0.05eth</p>
+      <a href="invest.html" class="btn btn-primary">invest</a>
+      <a href="#" class="btn btn-primary">mail</a>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">AI powered car</h5>
+      <p class="card-text">Cars which are AI powered</p>
+      <p class="card-text"><strong>Platform: </strong>app</p>
+      <p class="card-text"><strong>Minimum Investment: 0.05eth</p>
+      <a href="invest.html" class="btn btn-primary">invest</a>
+      <a href="#" class="btn btn-primary">mail</a>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">FundIt</h5>
+      <p class="card-text">This is a website which can invest and post projects using crypto</p>
+      <a href="invest.html" class="btn btn-primary">invest</a>
+      <a href="#" class="btn btn-primary">mail</a>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

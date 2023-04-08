@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Post a Project</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">FundIt</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="post-project.html">Post Project</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="project-details.html">Fund Project</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+  <div class="container">
+    <h1 class="my-4">Post a Project</h1>
+    <form id="projectForm">
+      <div class="form-group">
+        <label for="projectTitle">Project Title</label>
+        <input type="text" class="form-control" id="projectTitle">
+      </div>
+      <div class="form-group">
+        <label for="projectDescription">Project Description</label>
+        <textarea class="form-control" id="projectDescription" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="projectSkills">Platform</label>
+        <input type="text" class="form-control" id="projectSkills">
+      </div>
+      <div class="form-group">
+        <label for="projectSkills">Your email</label>
+        <input type="email" class="form-control" id="email">
+      </div>
+      <div class="form-group">
+        <label for="projectBudget">Invest minimum amount</label>
+        <input type="number" class="form-control" id="projectBudget">
+      </div>
+      <div class="form-group">
+        <label for="projectImage">Project Image</label>
+        <input type="file" class="form-control-file" id="projectImage">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    const projectForm = document.querySelector('#projectForm');
+
+    projectForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const projectTitle = document.querySelector('#projectTitle').value;
+      const projectDescription = document.querySelector('#projectDescription').value;
+      const projectSkills = document.querySelector('#projectSkills').value;
+      const projectBudget = document.querySelector('#projectBudget').value;
+      const projectImage = document.querySelector('#projectImage').value;
+
+      const projectDetails = {
+        title: projectTitle,
+        description: projectDescription,
+        skills: projectSkills,
+        budget: projectBudget,
+        image: projectImage
+      };
+
+
+      localStorage.setItem('projectDetails', JSON.stringify(projectDetails));
+
+      window.location.href = 'project-details.html';
+    });
+  </script>
+</body>
+
+</html>
